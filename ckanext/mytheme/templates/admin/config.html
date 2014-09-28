@@ -1,0 +1,40 @@
+{% import 'macros/autoform.html' as autoform %}
+
+{% extends "admin/base.html" %}
+
+{% block primary_content_inner %}
+  <form method='post' action="" class="form-horizontal">
+    {% block admin_form %}
+      {{ autoform.generate(form_items, data, errors) }}
+    {% endblock %}
+    <div class="form-actions">
+      {% set locale = h.dump_json({'content': _('确认重置为默认配置？')}) %}
+      <a href="{% url_for controller='admin', action='reset_config' %}" class="btn btn-danger pull-left" data-module="confirm-action" data-module-i18n="{{ locale }}">{{ _('重置配置') }}</a>
+      <button type="submit" class="btn btn-primary" name="save">{{ _('更新配置') }}</button>
+    </div>
+  </form>
+{% endblock %}
+
+{% block secondary_content %}
+  <div class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+      <i class="icon-info-sign"></i>
+      {{ _('CKAN配置选项') }}
+    </h2>
+    <div class="module-content">
+      {% block admin_form_help %}
+      {% set about_url = h.url_for(controller='home', action='about') %}
+      {% set home_url = h.url_for(controller='home', action='index') %}
+      {% set docs_url = "http://docs.ckan.org/en/{0}/theming.html".format(g.ckan_doc_version) %}
+      {% trans %}
+        <p><strong>网站标题：</strong>用于显示在CKAN网站实例上的标题。</p>
+        <p><strong>风格：</strong>从多个色彩风格主题中选出一种快速应用于CKAN网站。</p>
+        <p><strong>网站标语：</strong>将显示在CKAN网站所有模板首部的标语。</p>
+        <p><strong>网站logo：</strong>将使用的网站logo对应路径。</p>
+        <p><strong>关于：</strong> 在CKAN<a href="{{ about_url }}">关于</a>页面显示的内容</p>
+      {% endtrans %}
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}
+

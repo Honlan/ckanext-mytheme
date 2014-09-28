@@ -1,0 +1,44 @@
+{% import 'macros/form.html' as form %}
+
+<form class="dataset-form form-horizontal" method="post" action="{{ action }}">
+  {{ form.errors(error_summary) }}
+
+  <fieldset>
+    <legend>{{ _('更改信息') }}</legend>
+
+    {{ form.input('name', label=_('用户名'), id='field-username', value=data.name, error=errors.name, classes=['control-medium'], is_required=true) }}
+
+    {{ form.input('fullname', label=_('全称'), id='field-fullname', value=data.fullname, error=errors.fullname, placeholder=_('eg. omni'), classes=['control-medium']) }}
+
+    {{ form.input('email', label=_('邮箱'), id='field-email', type='email', value=data.email, error=errors.email, placeholder=_('eg. omni@example.com'), classes=['control-medium'], is_required=true) }}
+
+    {{ form.markdown('about', label=_('关于'), id='field-about', value=data.about, error=errors.about, placeholder=_('一些关于你自己的信息')) }}
+
+    {% if c.show_email_notifications %}
+      {% call form.checkbox('activity_streams_email_notifications', label=_('订阅邮件通知'), id='field-activity-streams-email-notifications', value=True, checked=c.userobj.activity_streams_email_notifications) %}
+      {{ form.info(_("当控制台有新动态时，你将会收到{site_title}的邮件通知".format(site_title=g.site_title)), classes=['info-help-tight']) }}
+      {% endcall %}
+    {% endif %}
+
+  </fieldset>
+
+  <fieldset>
+    <legend>{{ _('修改密码') }}</legend>
+
+    {{ form.input('password1', type='password', label=_('密码'), id='field-password', value=data.password1, error=errors.password1, classes=['control-medium'], attrs={'autocomplete': 'off'} ) }}
+
+    {{ form.input('password2', type='password', label=_('确认密码'), id='field-password-confirm', value=data.password2, error=errors.password2, classes=['control-medium'], attrs={'autocomplete': 'off'}) }}
+  </fieldset>
+
+  <div class="form-actions">
+    {% block delete_button %}
+      {% if h.check_access('user_delete', {'id': data.id})  %}
+        {% set locale = h.dump_json({'content': _('确认删除此用户（不可恢复）？')}) %}
+        <a class="btn btn-danger pull-left" href="{% url_for controller='user', action='delete', id=data.id %}" data-module="confirm-action" data-module-i18n="{{ locale }}">{% block delete_button_text %}{{ _('删除用户') }}{% endblock %}</a>
+      {% endif %}
+    {% endblock %}
+    {{ form.required_message() }}
+    <button class="btn btn-primary" type="submit" name="save">{{ _('更新信息') }}</button>
+  </div>
+</form>
+

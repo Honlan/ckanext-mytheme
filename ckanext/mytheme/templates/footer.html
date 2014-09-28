@@ -1,0 +1,25 @@
+<footer class="footer-site">
+  <div class="container">
+    {% block footer_content %}
+      <nav class="footer-info">
+        {% block footer_info %}
+           <h3 id="footer_omni">Omnilab Open Data</h3>
+           <p><a href="{{ h.url_for(controller='home', action='about') }}">{{ _('© 2014 上海交通大学 网络信息中心 {0}').format(g.site_title) }}</a></p>
+        {% endblock %}
+      </nav>
+
+      <div class="footer-thanks">
+        {% block footer_thanks %}
+          <p>{% trans %}Powered By <a href="http://ckan.org">Ckan</a> | <a href="http://www.okfn.org/">OKF</a> | <a href="http://www.opendefinition.org/od/">Open Data</a>{% endtrans %}</p>
+        {% endblock %}
+      </div>
+    {% endblock %}
+  </div>
+
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>
+

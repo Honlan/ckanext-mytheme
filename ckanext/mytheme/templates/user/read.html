@@ -1,0 +1,27 @@
+{% extends "user/read_base.html" %}
+
+{% block primary_content_inner %}
+  <h2 class="hide-heading">
+    {% block page_heading %}{{ _('数据集') }}{% endblock %}
+  </h2>
+  {% block package_list %}
+  {% if user.datasets %}
+    {% snippet 'snippets/package_list.html', packages=user.datasets %}
+  {% else %}
+
+    {% if c.is_myself %}
+      <p class="empty">
+        {{ _('你没有任何数据集') }}
+        {% if h.check_access('package_create') %}
+          {% link_for _('现在就新建一个数据集？'), controller='package', action='new' %}
+        {% endif %}
+      </p>
+    {% else %}
+      <p class="empty">
+        {{ _('该用户没有任何数据集') }}
+      </p>
+    {% endif %}
+  {% endif %}
+  {% endblock %}
+{% endblock %}
+

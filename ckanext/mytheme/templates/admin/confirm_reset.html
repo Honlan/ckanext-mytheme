@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+
+{% block subtitle %}{{ _("确认重置") }}{% endblock %}
+
+{% block primary_content_inner %}
+  <form action="{% url_for controller='admin', action='reset_config' %}" method="post">
+    <p>{{ _('确认重置系统配置吗？') }}</p>
+    <p class="form-actions">
+      <button class="btn" type="submit" name="cancel" >{{ _('取消') }}</button>
+      <button class="btn btn-primary" type="submit" name="delete" >{{ _('确认') }}</button>
+    </p>
+  </form>
+{% endblock %}
+

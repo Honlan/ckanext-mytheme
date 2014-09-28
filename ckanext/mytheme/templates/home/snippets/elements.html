@@ -1,0 +1,22 @@
+<div class="elements">
+  <div class="element">
+    <img src="/dataset.png"></img>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{ _('数据集') }}</span>{{ _('是数据存储的基本单元，其中可以包含多个资源文件。数据集有着唯一的创建者，创建者可以对其进行添加资源、删除资源、修改数据集信息、删除数据集等编辑操作。') }}</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ _('需要注意的是，由于我们属于完全开放的数据平台，因此对于某一数据集，其他用户也具备和创建者完全相同的编辑权限。') }}</p>
+    <a href="{{ h.url_for(controller='package', action='search') }}" class="btn btn-info" role="button">Try it</a>
+  </div>
+
+  <div class="element">
+    <img src="organization.png"></img>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ _('用户可以创建') }}<span>{{ _('组织') }}</span>{{ _('，邀请他人加入组织，并且将属于自己的数据集加入组织。组织中的用户角色分为管理员、编辑员和成员，操作权限依次降低。') }}</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ _('数据集加入组织之后，便只有组织内的管理员和编辑员对其具备编辑权限。除此之外，组织中的数据集可以设置为开放或私有，私有数据集仅组织内成员才能访问。') }}</p>
+    <a href="{{ h.url_for(controller='organization', action='index') }}" class="btn btn-info" role="button">Try it</a>
+  </div>
+
+  <div class="element">
+    <img src="/group.png"></img>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ _('用户还可以创建') }}<span>{{ _('群组') }}</span>{{ _('，和组织不同的是群组中的角色只有管理员和成员。为什么没有编辑员？因为对于群组中的数据集，所有用户具备完整的编辑权限，而且群组中的私有数据集对于任何用户都不可见！') }}</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ _('因此把私有数据集加入群组没有任何意义，可以将群组理解为一个仅显示开放数据集的共享数据维护平台。') }}</p>
+    <a href="{{ h.url_for(controller='group', action='index') }}" class="btn btn-info" role="button">Try it</a>
+  </div>
+</div>   

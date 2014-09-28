@@ -1,0 +1,14 @@
+<section class="module module-narrow module-shallow simple-input">
+  <h2 class="module-heading">{{ _('用户') }}</h2>
+  <form class="module-content field-bordered" action="{% url_for controller='user', action='index' %}" method="get">
+    <div class="field">
+      <label for="field-user-search">{{ _('查找用户') }}</label>
+      <input id="field-user-search" class="field" name="q" placeholder="{{ _('omni') }}" />
+      <button class="btn-search" type="submit">{{ _('搜') }}</button>
+    </div>
+  </form>
+  <ul class="nav nav-simple">
+    <li class="nav-item">{{ h.nav_link(_('所有用户'), controller='user', action='index') }}</li>
+  </ul>
+</section>
+

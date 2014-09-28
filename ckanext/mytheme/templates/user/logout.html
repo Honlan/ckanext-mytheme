@@ -1,0 +1,15 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('注销登陆') }}{% endblock %}
+
+{% block primary_content %}
+  <section class="module">
+    <div class="module-content">
+      <h1 class="page-heading">
+      	{% block page_heading %}{{ _('注销登陆') }}{% endblock %}
+      </h1>
+      <p>{% trans %}你已经退出登陆{% endtrans %}</p>
+    </div>
+  </section>
+{% endblock %}
+

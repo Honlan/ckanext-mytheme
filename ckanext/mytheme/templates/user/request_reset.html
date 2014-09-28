@@ -1,0 +1,40 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('重置密码') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('重置密码'), controller='user', action='request_reset' %}</li>
+{% endblock %}
+
+{% block primary_content %}
+  <article class="module">
+    <div class="module-content">
+      {% block primary_content_inner %}
+      <h1 class="page-heading">{{ _('重置你的密码') }}</h1>
+      {% block form %}
+        <form action="" method="post" class="form-inline control-medium">
+          <label for="field-username">{{ _('用户名') }}</label>
+          <input id="field-username" name="user" value="" type="text" />
+          {% block form_button %}
+          <button class="btn btn-primary" type="submit" name="reset">{{ _("请求密码重置") }}</button>
+          {% endblock %}
+        </form>
+      {% endblock %}
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary_content %}
+  {% block help %}
+  <section class="module module-narrow module-shallow">
+    {% block help_inner %}
+    <h2 class="module-heading">{{ _('密码重置如何工作？') }}</h2>
+    <div class="module-content">
+      <p>{% trans %}输入你的用户名，我们将发给你一封包含设置新密码链接的邮件{% endtrans %}</p>
+    </div>
+    {% endblock %}
+  </section>
+  {% endblock %}
+{% endblock %}
+

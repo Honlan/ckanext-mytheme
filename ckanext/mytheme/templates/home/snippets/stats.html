@@ -1,0 +1,40 @@
+{% set stats = h.get_site_statistics() %}
+
+<div class="stats">
+  <div class="inline">
+    <h1>{{ _('我们现在已经拥有') }}</h1>
+    <h3>{{ _('{0} 数据统计').format(g.site_title) }}</h3>
+    <ul>
+      <li>
+          <a id="stats1" href="{{ h.url_for(controller='package', action='search') }}">
+            {#{ _('dataset') if stats.dataset_count == 1 else _('datasets') }#}
+            {{ _('数据集') }}
+            <b>{{ h.SI_number_span(stats.dataset_count) }}</b>
+          </a>
+      </li>
+      <li>
+          <a id="stats2" href="{{ h.url_for(controller='organization', action='index') }}">
+            {#{ _('organization') if stats.organization_count == 1 else _('organizations') }#}
+            {{ _('组织') }}
+            <b>{{ h.SI_number_span(stats.organization_count) }}</b>
+          </a>
+      </li>
+      <li>
+          <a id="stats3" href="{{ h.url_for(controller='group', action='index') }}">
+            {#{ _('group') if stats.group_count == 1 else _('groups') }#}
+            {{ _('群组') }}
+            <b>{{ h.SI_number_span(stats.group_count) }}</b>
+          </a>
+      </li>
+      <li>
+          <a id="stats4" href="{{ h.url_for(controller='related', action='dashboard') }}">
+            {#{ _('related item') if stats.related_count == 1 else _('related items') }#}
+            {{ _('相关项') }} 
+            <b>{{ h.SI_number_span(stats.related_count) }}</b>
+          </a>
+      </li>
+    </ul>
+    <h5>{{ _('加入我们，贡献你的力量') }}<br/>{{ _('在广阔的开放数据平台中挖掘无限可能') }}</h5>
+  </div>
+</div>
+

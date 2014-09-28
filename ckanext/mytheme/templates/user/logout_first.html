@@ -1,0 +1,29 @@
+{% import 'macros/form.html' as form %}
+{% extends "user/login.html" %}
+
+{% set logout_url = h.url_for(controller='user',action='logout') %}
+
+{% block actions %}{% endblock %}
+
+{% block form %}
+  <div class="alert alert-error">{{ _("你已经登陆为{user}.").format(user=c.user) }} <a href="{{ logout_url }}">{{ _('注销登陆') }}</a>?</div>
+  <div class="form-horizontal">
+    {{ form.input('login', label=_('用户名'), id='field-login', value="", error="", classes=["control-full"], attrs={"disabled": "disabled"}) }}
+    {{ form.input('password', label=_('密码'), id='field-password', type="password", value="", error="", classes=["control-full"], attrs={"disabled": "disabled"}) }}
+    {{ form.checkbox('remember', label=_('记住我'), id='field-remember', checked=true, attrs={"disabled": "disabled"}) }}
+    <div class="form-actions">
+      <button class="btn btn-primary disabled" type="submit" disabled>{{ _('登陆') }}</button>
+    </div>
+  </div>
+{% endblock %}
+
+{% block secondary_content %}
+  <section class="module module-narrow module-shallow">
+    <h2 class="module-heading">{{ _("你已经登陆了") }}</h2>
+    <div class="module-content">
+      <p>{{ _("以其他账号登陆之前需要先注销登陆") }}</p>
+      <p class="action"><a class="btn" href="{{ logout_url }}">{{ _("现在注销登陆") }}</a></p>
+    </div>
+  </section>
+{% endblock %}
+

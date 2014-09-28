@@ -1,0 +1,27 @@
+{% extends "user/dashboard.html" %}
+
+{% block dashboard_activity_stream_context %}{% endblock %}
+
+{% block page_primary_action %}
+  {% if h.check_access('group_create') %}
+    {% link_for _('新建群组'), controller='group', action='new', class_="btn btn-primary", icon="plus-sign-alt" %}
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h2 class="hide-heading">{{ _('我的群组') }}</h2>
+  {% set groups = h.groups_available(am_member=True) %}
+  {% if groups %}
+    <div class="wide">
+      {% snippet "group/snippets/group_list.html", groups=groups %}
+    </div>
+  {% else %}
+    <p class="empty">
+      {{ _('你不是任何群组的成员') }}
+      {% if h.check_access('group_create') %}
+        {% link_for _('现在就新建一个群组？'), controller='group', action='new' %}
+      {% endif %}
+    </p>
+  {% endif %}
+{% endblock %}
+

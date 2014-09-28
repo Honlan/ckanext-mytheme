@@ -1,0 +1,38 @@
+<div role="mainpage" class="mainpage">
+  <div id="promoted">
+      {% block promoted %}
+        {% snippet 'home/snippets/promoted.html' %}
+      {% endblock %}
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        {% block stats %}
+          {% snippet 'home/snippets/stats.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        {% block search %}
+          {% snippet 'home/snippets/search.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        {% block elements %}
+          {% snippet 'home/snippets/elements.html' %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+
