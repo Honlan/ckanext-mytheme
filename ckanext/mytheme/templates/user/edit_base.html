@@ -1,0 +1,11 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('管理') }} - {{ c.user_dict.display_name }} - {{ _('用户') }}{% endblock %}
+
+{% block primary_content %}
+  <article class="module">
+    <div class="module-content">
+      {% block primary_content_inner %}{% endblock %}
+    </div>
+  </article>
+{% endblock %}
