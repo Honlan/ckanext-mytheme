@@ -18,7 +18,7 @@ Example:
   {% block info %}
   <div class="module module-narrow module-shallow context-info">
     {% if has_context_title %}
-      <h2 class="module-heading"><i class="icon-building"></i> {{ _('Organization') }}</h2>
+      <h2 class="module-heading"><i class="icon-building"></i> {{ _('组织') }}</h2>
     {% endif %}
     <section class="module-content">
       {% block inner %}
@@ -36,21 +36,21 @@ Example:
       {% if organization.description %}
         <p>
           {{ h.markdown_extract(organization.description, 180) }}
-          {% link_for _('read more'), controller='organization', action='about', id=organization.name %}
+          {% link_for _('了解更多'), controller='organization', action='about', id=organization.name %}
         </p>
       {% else %}
-        <p class="empty">{{ _('There is no description for this organization') }}</p>
+        <p class="empty">{{ _('该组织暂无简介') }}</p>
       {% endif %}
       {% endblock %}
       {% if show_nums %}
         {% block nums %}
         <div class="nums">
           <dl>
-            <dt>{{ _('Followers') }}</dt>
+            <dt>{{ _('关注者') }}</dt>
             <dd>{{ h.SI_number_span(organization.num_followers) }}</dd>
           </dl>
           <dl>
-            <dt>{{ _('Datasets') }}</dt>
+            <dt>{{ _('数据集') }}</dt>
             <dd>{{ h.SI_number_span(organization.package_count) }}</dd>
           </dl>
         </div>
