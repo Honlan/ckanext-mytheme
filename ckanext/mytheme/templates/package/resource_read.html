@@ -107,7 +107,7 @@
                 <td>{{ res.mimetype_inner or res.mimetype or res.format or _('未知') }}</td>
               </tr>
               <tr>
-                <th scope="row">{{ _('执照') }}</th>
+                <th scope="row">{{ _('授权') }}</th>
                 <td>{% snippet "snippets/license.html", pkg_dict=pkg, text_only=True %}</td>
               </tr>
               {% for key, value in h.format_resource_items(res.items()) %}
